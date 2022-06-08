@@ -14,3 +14,4 @@ vector<char> getPerm(const Tree& tr, int k) {
   }
   return resultat;  
 }
+}
