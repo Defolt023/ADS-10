@@ -9,51 +9,49 @@ using std::vector;
 class Tree {
  private:
   struct Node {
-  vector<Node*> ir;
-  char vall;
+  char vl;
+  vector<Node*> v1;
   };
-  Node* rroott;
-  vector<string> iir2;
-  void createTr(Node* rroott, vector<char> chch) {
-  if (rroott->vall != '*') {
-  chch.erase(find(chch.begin(), chch.end(), rroott->vall));
+  vector<string> i1;
+  Node* rod;
+  void createTr(Node* rod, vector<char> chh) {
+  if (rod->vl != '*') {
+  chh.erase(find(chh.begin(), chh.end(), rod->vl));
   }
-  if (!chch.size()) {
-  return;
-  }   
-  for (size_t j = 0; j < chch.size(); j++)
-  rroott->ir.push_back(new Node());
-  for (size_t j = 0; j < rroott->ir.size(); j++) {
-  rroott->ir[j]->vall = chch[j];
-  createTr(rroott->ir[j], chch);
-  }   
-  }
-  void Permut(Node* rroott, string strr = "") {
-  if (rroott->vall != '*') {
-  strr += rroott->vall;
-  }
-  if (!rroott->ir.size()) {
-  strr += rroott->vall;
-  iir2.push_back(strr);
+  if (!chh.size()) {
   return;
   }
-  for (int j = 0; j < rroott->ir.size(); j++) {
-  Permut(rroott->ir[j], strr);
+  for (size_t j = 0; j < chh.size(); j++)
+  rod->v1.push_back(new Node());
+  for (size_t j = 0; j < rod->v1.size(); j++) {
+  rod->v1[j]->vl = chh[j];
+  createTr(rod->v1[j], chh);
   }
+  }
+  void Permut(Node* rod, string strr = "") {
+  if (rod->vl != '*')
+  strr += rod->vl;
+  if (!rod->v1.size()) {
+  strr += rod->vl;
+  i1.push_back(strr);
+  return;
+  }
+  for (int j = 0; j < rod->v1.size(); j++)
+  Permut(rod->v1[j], strr);
   }
 
  public:
   string operator[](int j) const {
-  if (j >= iir2.size()) {
+  if (j >= i1.size()) {
   return "";
   }
-  return iir2[j];
+  return i1[j];
   }
-  explicit Tree(vector<char> vall) {
-  rroott = new Node();
-  rroott->vall = '*';
-  createTr(rroott, vall);
-  Permut(rroott);
+  explicit Tree(vector<char> vl) {
+  rod = new Node();
+  rod->vl = '*';
+  createTr(rod, vl);
+  Permut(rod);
   }
 };
 #endif  // INCLUDE_TREE_H_
